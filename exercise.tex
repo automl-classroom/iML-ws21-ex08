@@ -1,0 +1,75 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,
+            bindingoffset=0.2in,
+            left=0.8in,
+            right=0.8in,
+            top=0.8in,
+            bottom=1.6in,
+            footskip=.8in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[]{amsmath}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\hypersetup{colorlinks = true}
+
+\usepackage{xcolor}
+
+\begin{document}
+
+{\noindent\LARGE Exercise 8\par}
+\vspace{8pt}
+{\noindent\huge\textbf{Explanation-by-Example Methods}}
+\vspace{20pt}
+
+\par\noindent\rule{\textwidth}{0.2pt}
+\begin{itemize}
+    \item You can get a bonus point for this exercise if you pass at least 85\% of the tests. Code is automatically tested after pushing. If your tests fail, either your code is wrong, or you solved the task differently. In the second case, we will manually check your solution.
+    \item Three collected bonus points result in a 0.33 increase of the final grade.
+    \item You are allowed to work in groups with up to three people. You do not need to specify your ErgebnisPIN as it is already collected from the entrance test.
+    \item Follow the `README.md` for further instructions.
+    \item Finish this exercise by \color{red}{8th December, 2021 at 11:59 pm.}
+\end{itemize}
+\par\noindent\rule{\textwidth}{0.2pt}
+\vspace{10pt}
+
+\noindent
+\subsection*{Adversarial Examples}
+Adversarial Examples are carefully constructed inputs that "fool" a trained model.
+In this exercise, your task is to generate adversarial examples using the fast gradient sign method:
+\begin{equation}
+    x \leftarrow x + \delta
+\end{equation}
+where
+\begin{equation}
+    \delta = \epsilon \cdot sign(\nabla_x \mathcal{L}(x, y; \theta))
+\end{equation}
+This is an untargeted method, which means the resulting class label is not specified in advance.
+The goal is to create an adversarial input that is indistinguishable (to the human eye) from an original input, but confuses the model.\\
+\noindent
+In this exercise, the goal is to create adversarial examples to fool an image classifier trained on the ImageNet dataset.
+To accomplish this, complete the functions \textit{get\_gradient}, \textit{perturb\_image}, \textit{create\_adversarials}.
+Finally, complete the \textit{plot\_adversarials} function to visualize the original image and the generated adversarial examples for different values of $\epsilon$.\\
+
+\noindent Associated file: \textit{adversarial.py}.
+
+
+
+\noindent
+\subsection*{Counterfactual Examples}
+Counterfactual examples are instances that with minimal feasible changes result in a different, used-defined prediction outcome.
+They tells us exactly what needs to be done to change a prediction and thus provide (actionable) recourse.
+Complete the functions \textit{compute\_distance, compute\_output\_difference, compute\_loss and create\_counterfactual} to create counterfactual instances based on the method proposed by \href{https://heinonline.org/HOL/Page?handle=hein.journals/hjlt31&div=29&g_sent=1&casa_token=b_RLJkzNRGAAAAAA:jUJgRUdjydLK2mc_I6JCXOjHj5M2HQfceDBdx2P5C9GXhy0k8fmfcnbsaF_clekNivbz8gBv}{Wachter et al.}:
+\begin{equation}
+    argmin_{x'}d(x, x') + \lambda \cdot (f(x') - y')^2
+\end{equation}
+where $d$ is the L1 distance.\\
+\noindent
+See also W08 T03 slide 21.
+\\
+
+\noindent Associated file: \textit{counterfactual.py}.
+
+
+
+
+\end{document}
