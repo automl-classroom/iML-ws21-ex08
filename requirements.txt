@@ -6,3 +6,5 @@ torchvision
 tqdm
 seaborn
 scikit-learn
+matplotlib
+configspace
