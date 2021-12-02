@@ -48,7 +48,7 @@ def compute_loss(x, counterfactual, output, desired_output, lambda_reg):
     The loss has two components: 
         - the distance between the original instance x and the counterfactual instance
         - the difference between the model output and the desired output.
-    The two components are combined via a weighted sum (weighted by lambda).
+    The two components are combined via a weighted sum (weighted by lambda_reg).
     Refer to W08 T03 slide 21.
     
     Parameters:
@@ -59,7 +59,7 @@ def compute_loss(x, counterfactual, output, desired_output, lambda_reg):
         lambda_reg (float): The lambda denoting the regularization strength.
 
     Returns:
-        difference (torch.tensor): The summed square error between output and desired_output.
+       loss (torch.tensor): The loss value, distance(x, x') + lambda_reg * difference(f(x'), y')
     """
     return None
 
